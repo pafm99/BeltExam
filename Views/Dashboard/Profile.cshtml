@@ -1,0 +1,22 @@
+@{
+    ViewData["Title"] = "Profile";
+}
+<body>
+    <a href="/Index">Dashboard</a>
+    <a href="/Logout", "Login">Logout</a>
+    <br>
+    <h1>@ViewBag.OtherUsers.Name</h1>
+    <h4>Username: @ViewBag.OtherUsers.Username</h4>
+    <h4>User Email: @ViewBag.OtherUsers.Email</h4>
+    <hr>
+    <p><b>@ViewBag.OtherUsers.Name 's Ideas:</b></p>
+ @{
+    foreach(var t in ViewBag.TheirIdeas)
+    {
+        <p>@t.IdeaText</p>
+    }
+}     
+    <hr>
+    <h6>Total Number of Ideas: @ViewBag.OtherUsers.Ideas.Count</h6>
+    <h6>Total Number of Likes: @ViewBag.OtherUsers.Likes.Count</h6>
+</body>

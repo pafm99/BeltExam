@@ -1,0 +1,35 @@
+@{
+    ViewData["Title"] = "Display";
+}
+    <body>
+        <h1>Idea Details</h1>
+        <a href="/Index">Dashboard</a>
+        <a href="/Logout">Logout</a>
+
+        <p><b>Date: </b> @ViewBag.currIdea.CreatedAt.ToString("MMM dd yyyy")</p>
+        <p><b>Creator: </b>@ViewBag.currIdea.User.Name</p>
+        <hr>
+        <p>@ViewBag.currIdea.IdeaText</p>
+
+
+            <h3>People who liked this post:</h3>
+    <table class="table table striped">
+        <thead>
+            <tr>
+                <th>Alias</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var like in ViewBag.currIdea.Likes){
+                    <tr>
+                        <td>@like.User.Alias</td>
+                        <td>@like.User.Name</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+    </body>

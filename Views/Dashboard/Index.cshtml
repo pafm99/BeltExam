@@ -1,0 +1,61 @@
+@{
+    ViewData["Title"] = "Register/Login";
+}
+<body>
+    <div>
+        <h1>Dashboard</h1>
+        <p>Hi @ViewBag.LoggedIn.Name</p>
+        <a href="Logout">Logout</a>
+        <hr>
+        <form action="Process" method="post">
+            <textarea cols="150" rows="2" placeholder="Post something witty here" name="IdeaText"></textarea><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <hr>
+    <div>
+        <table class="table table striped">
+            <tr>
+                <th>My Ideas</th>
+            </tr>
+ @{
+    foreach(var i in ViewBag.MyIdeas)
+    {
+            <tr>
+                <td>
+                    <p>@i.IdeaText</p>
+                </td>
+            </tr>
+    }
+ }
+        </table>
+        <hr>
+    </div>
+    <div>
+        <h4>All Ideas Created</h4>
+
+    <table class="table table striped">
+        <tr>
+            <th>User</th>
+            <th>Idea Text</th>
+            <th>Action</th>
+            <th>Count</th>
+        </tr>
+@{
+    foreach(var x in ViewBag.AllIdeas)
+    {
+        <tr>
+            <td><b><a href="Profile/@x.User.UserId">@x.User.Name</a></b> Says: </td>
+            <td><a href="Display/@x.IdeaId"> @x.IdeaText</a></td>
+            <td><a href="Add/@x.IdeaId">Like</a></td>
+            <td>Number of Likes: @x.Likes.Count</td>
+        </tr>
+
+    }
+}
+
+    </table>
+
+
+    </div>
+</body>
